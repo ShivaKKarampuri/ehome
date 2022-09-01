@@ -25,23 +25,15 @@ app.use(() => {
 });
 
 app.use(errorHandler);
-//mongodb+srv://manohar_rentals:obiAXw5XaoXT1oDq@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority
-mongoose.connect("mongodb+srv://manohar_rentals:obiAXw5XaoXT1oDq@rentals.q1eka.azure.mongodb.net/?retryWrites=true&w=majority");
-const db = mongoose.connection;
-console.log(db)
-db.on('error', console.error.bind(console, 'DB connection error!'));
-app.listen(3000, () => {
-       console.log(`Listening On PORT 3000`);
-       });
 
-// mongoose
-//   .connect('mongodb://localhost:27017/')
-//   .then(() => {
-//     console.log("Connected to db");
-//     app.listen(3000, () => {
-//       console.log(`Listening On PORT 3000`);
-//     });
-//   })
-//   .catch(() => {
-//     throw createHttpError(501, "Unable to connect database");
-//   });
+mongoose
+  .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
+  .then(() => {
+    console.log("Connected to db");
+    app.listen(3000, () => {
+      console.log(`Listening On PORT 3000`);
+    });
+  })
+  .catch(() => {
+    throw createHttpError(501, "Unable to connect database");
+  });

@@ -13,7 +13,7 @@ export const createProduct: RequestHandler = async (req, res, next) => {
   try {
     const product = new Product({location:location, category:category, recommended:recommended,newlyAdded:newlyAdded  });
     await product.save();
-    res.json({ message: "Product details have been added" });
+    res.json({ message: "Product details have been added!!" });
   } catch (error) {
     console.log(error);
     return next(InternalServerError);
