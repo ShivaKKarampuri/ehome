@@ -12,9 +12,10 @@ export interface InewlyAddedHouse extends Document {
 }
 
 export interface IrecommendedHouse  extends Document {
-    recent_independent:String,
-    recent_appartment:String
-    recent_villas:String
+     house_type:String,
+    location:String,
+    reviews:String,
+    price:Number
 }
 export interface IProduct extends Document {
    location : String;
@@ -22,3 +23,16 @@ export interface IProduct extends Document {
    recommended: IrecommendedHouse;
   newlyAdded:InewlyAddedHouse;
 }
+
+// export interface IProduct extends Document {
+//     location : String;
+//     resta: { restaurant_details: Object, restaurant_rank: number }[];
+//     category:{house_type: String,
+//     location: String,
+//      reviews: String,
+//      price:String
+//     }[],
+   
+//    newlyAdded:InewlyAddedHouse;
+//  }
+ 

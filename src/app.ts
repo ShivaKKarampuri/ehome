@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 // app.use("/", exampleRoute);
 //app.use("/user", userRoute);
-app.use("/prod", productRoute);
+app.use("/listings", productRoute);
 app.use(() => {
   throw createHttpError(404, "Route not found");
 });

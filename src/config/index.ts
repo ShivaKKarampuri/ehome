@@ -14,7 +14,7 @@ let testAccount = {
 };
 
 export let transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
+  host: "asda.email",
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
