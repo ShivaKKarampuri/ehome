@@ -9,6 +9,7 @@ import { errorHandler } from "./middleware/errorHanlder";
 // import kPassport from "./middleware/passport";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { createAdvertisement } from "./controllers/advertisementController";
 const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(cookieParser());
 // app.use("/", exampleRoute);
 //app.use("/user", userRoute);
 app.use("/listings", productRoute);
+app.use("/advertisement",createAdvertisement);
 app.use(() => {
   throw createHttpError(404, "Route not found");
 });

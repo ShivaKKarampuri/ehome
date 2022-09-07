@@ -14,7 +14,9 @@ const ProductSchema: Schema = new Schema({
       recommended: [recommendedHouseSchema],
       newlyAdded:[recommendedHouseSchema],
   });
-  
+
+
+
 
 
 export default model<IProduct>("Product", ProductSchema);
