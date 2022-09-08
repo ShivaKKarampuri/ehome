@@ -13,6 +13,7 @@ const ProductSchema: Schema = new Schema({
      category :{type:Array},
       recommended: [recommendedHouseSchema],
       newlyAdded:[recommendedHouseSchema],
+      isFavourite:{type:Boolean,default:false}
   });
 
 

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createProduct, getProduct } from "../controllers/productController";
+import { createProduct, getProduct,addFavourite,getFavourites } from "../controllers/productController";
 import {
   sendVerificationMail,
   signinUser,
@@ -22,5 +22,7 @@ const router = Router();
 router.post("/create",createProduct);
   
  router.post("/items",getProduct);
+ router.post('/favourite',addFavourite);
+ router.post('/favourites/list',getFavourites);
 
 export default router;

@@ -22,6 +22,7 @@ export interface IProduct extends Document {
    category: IcategoryHouse;
    recommended: IrecommendedHouse;
   newlyAdded:InewlyAddedHouse;
+  isFavourite:Boolean
 }
 
 // export interface IProduct extends Document {

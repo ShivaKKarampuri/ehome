@@ -38,3 +38,40 @@ export const getProduct: RequestHandler = async (req, res, next) => {
       return next(InternalServerError);
     }
   };
+
+  export const addFavourite: RequestHandler = async (req, res, next) => {
+    var { productId} = req.body;
+  //const location:string = req.query.location!;
+ 
+  console.log(productId);
+
+  try {   
+      const productDetails = await Product.findById(productId);
+      var query = {'_id': productId};
+
+      console.log(productDetails );
+      if (!productDetails) {
+        return  next(createHttpError(404, "product details  not found"));
+      }
+      await Product.findOneAndUpdate(query,{isFavourite:true} , {upsert: true});
+
+      res.status(200).send("Product has been added to favourites"); 
+   
+  } catch (error) {
+    return next(InternalServerError);
+  }
+};
+
+export const getFavourites: RequestHandler = async (req, res, next) => {
+try {   
+  const productDetails = await Product.find({isFavourite:true});
+  console.log(productDetails );
+  if (productDetails) {
+    return res.status(200).send(productDetails);
+  }else{
+  res.status(404).send("Product details not found"); 
+  }
+} catch (error) {
+  return next(InternalServerError);
+}
+};
