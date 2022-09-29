@@ -30,24 +30,31 @@ const AddressSchema: Schema = new Schema ({
 });
 
 const AdvertisementSchema: Schema = new Schema({
-     category :{type:Array},
-     title:{type:String},
-     price:{type:Number},
-     currencyType:{type:Array},
-     miniumAdvance:{type:Number},
-     tags:{type:Array},
-     description:{type:String},
+     category :{type:Array,
+      required: true},
+     title:{type:String,
+      required: true},
+     price:{type:Number,
+      required: true},
+     currencyType:{type:Array,
+      required: true},
+     miniumAdvance:{type:Number,
+      required: true},
+     tags:{type:Array,
+      required: true},
+     description:{type:String,
+      required: true},
      address: {
         type: AddressSchema,
-        // required: true,
+         required: true,
       },
       property:{
         type: PropertySchema,
-        // required: true,
+         required: true,
       },
       contact:{
         type:ContactInfoSchema,
-        // required: true,
+         required: true,
       }
 
   });

@@ -9,10 +9,10 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema = new Schema({
-  name: { type: String },
-  email: { type: String, unquie: true },
-  password: { type: String },
-  isUserVerified: { type: Boolean, default: false },
+  name: { type: String ,required: true},
+  email: { type: String, unquie: true ,required: true},
+  password: { type: String},
+  isUserVerified: { type: Boolean, default: false  },
   verfiyToken: { type: String },
 });
 

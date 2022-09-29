@@ -10,7 +10,7 @@ import{IcategoryHouse,InewlyAddedHouse,IrecommendedHouse,IProduct} from '../inte
 
 const ProductSchema: Schema = new Schema({
     location: { type: String,required:true },
-     category :{type:Array},
+     category :{type:Array,required:true },
       recommended: [recommendedHouseSchema],
       newlyAdded:[recommendedHouseSchema],
       isFavourite:{type:Boolean,default:false}
