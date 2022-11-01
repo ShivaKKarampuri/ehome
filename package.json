@@ -4,12 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "tsc",
-    "start": "node ./dist/app.js",
-    "start2": "nodemon ./dist/app.js",
-    "dev": "npm-run-all --parallel watch start2",
-    "prod": "npm-run-all --parallel start"
+    "build": "tsc",
+    "start:dev": "nodemon",
+    "start": "dist/app.js"
   },
   "keywords": [],
   "author": "",
