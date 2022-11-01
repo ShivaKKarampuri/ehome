@@ -35,6 +35,9 @@ mongoose
     app.listen(3000, () => {
       console.log(`Listening On PORT 3000`);
     });
+    app.get('/', (req, res) => {
+      res.send('Hello World!')
+    })
   })
   .catch(() => {
     throw createHttpError(501, "Unable to connect database");
