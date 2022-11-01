@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'ehomeapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_41E4A898FCA3460E82DDE04D9BDE75DC }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_02AE9F2C5614477AA1A755C1E0ED2A88 }}
           package: .
