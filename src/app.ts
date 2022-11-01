@@ -25,20 +25,21 @@ app.use("/advertisement",createAdvertisement);
 app.use(() => {
   throw createHttpError(404, "Route not found");
 });
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+app.listen(3000, () => {
+  console.log(`Listening On PORT 3000`);
+});
 
 app.use(errorHandler);
 
-mongoose
-  .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
-  .then(() => {
-    console.log("Connected to db");
-    app.listen(3000, () => {
-      console.log(`Listening On PORT 3000`);
-    });
-    app.get('/', (req, res) => {
-      res.send('Hello World!')
-    })
-  })
-  .catch(() => {
-    throw createHttpError(501, "Unable to connect database");
-  });
+// mongoose
+//   .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
+//   .then(() => {
+//     console.log("Connected to db");
+    
+//   })
+//   .catch(() => {
+//     throw createHttpError(501, "Unable to connect database");
+//   });
