@@ -37,12 +37,12 @@ app.listen(3000, () => {
 
 app.use(errorHandler);
 
-// mongoose
-//   .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
-//   .then(() => {
-//     console.log("Connected to db");
+mongoose
+  .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
+  .then(() => {
+    console.log("Connected to db");
     
-//   })
-//   .catch(() => {
-//     throw createHttpError(501, "Unable to connect database");
-//   });
+  })
+  .catch(() => {
+    throw createHttpError(501, "Unable to connect database");
+  });
