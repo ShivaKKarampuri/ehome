@@ -2,6 +2,7 @@ import express, { ErrorRequestHandler } from "express";
 import createHttpError from "http-errors";
 import userRoute from "./routes/userRoutes";
 import productRoute from "./routes/product";
+import adRoute from "./routes/ad";
 import mongoose from "mongoose";
 import { DB, PORT } from "./config";
 import { errorHandler } from "./middleware/errorHanlder";
@@ -21,6 +22,8 @@ app.use(cookieParser());
 // app.use("/", exampleRoute);
 //app.use("/user", userRoute);
 app.use("/listings", productRoute);
+app.use("/ad", adRoute);
+
 app.use("/advertisement",createAdvertisement);
 app.use(() => {
   throw createHttpError(404, "Route not found");
