@@ -21,12 +21,18 @@ export const postAd: RequestHandler = async (req, res, next) => {
 
 
 export const getAds: RequestHandler = async (req, res, next) => {
-      const { location} = req.body;
-    //const location:string = req.query.location!; 
-    console.log(location);
+    
+   
+    console.log('req',req.query);
     try {   
-        const adsList = await Ad.find({location:location});
-        console.log(adsList );
+      let adsList = [];
+      if(req.query){
+        adsList = await Ad.find(req.query);
+      }else{
+        adsList = await Ad.find();
+      }
+        
+     
         if (adsList) {
           return res.status(200).send(adsList);
         }

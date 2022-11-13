@@ -15,7 +15,7 @@ const AdSchema = new Schema({
     zipCode: { type: String },
   },
   location: { type: Object },
-  gallery: [{ type: Object }],//{path: 'sites/uploads/images/test.png',url: '/images/test.png',caption: 'Test image'}
+  gallery: [],//{path: 'sites/uploads/images/test.png',url: '/images/test.png',caption: 'Test image'}
   propertyInfo: {
     builtYear: { type: String },
     builtArea: { type: String },
