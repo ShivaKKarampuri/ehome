@@ -20,7 +20,7 @@ app.use(cookieParser());
 // kPassport(passport);
 
 // app.use("/", exampleRoute);
-//app.use("/user", userRoute);
+app.use("/user", userRoute);
 app.use("/listings", productRoute);
 app.use("/ad", adRoute);
 

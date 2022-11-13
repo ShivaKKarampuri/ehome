@@ -6,6 +6,7 @@ export interface IUser extends Document {
   password: string;
   isUserVerified: boolean;
   verfiyToken: string;
+  favorites: []
 }
 
 const UserSchema: Schema = new Schema({
@@ -14,6 +15,12 @@ const UserSchema: Schema = new Schema({
   password: { type: String},
   isUserVerified: { type: Boolean, default: false  },
   verfiyToken: { type: String },
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Ad"
+    }]
+
 });
 
 export default model<IUser>("User", UserSchema);

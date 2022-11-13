@@ -6,6 +6,8 @@ import {
   verifyUserMail,
   sendForgotPasswordMail,
   verifyForgotMail,
+  addFavorite,
+  getUserData
 } from "../controllers/userControllers";
 import {
   signupUserValidation,
@@ -39,5 +41,7 @@ router.post(
   sendForgotPasswordMailValidation,
   sendForgotPasswordMail
 );
+router.post("/favourite",addFavorite);
+router.get("/getUserInfo",getUserData);
 
 export default router;

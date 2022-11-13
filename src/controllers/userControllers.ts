@@ -7,13 +7,14 @@ import { FRONTEND_URL, JWT_KEY, transporter } from "../config";
 import nodemailer from "nodemailer";
 export const signupUser: RequestHandler = async (req, res, next) => {
   const { name, email, password } = req.body;
+  let favorites = req.body.favorites ? req.body.favorites : [];
 
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) return next(createHttpError(422, "Email Already Exist!"));
 
     const hashedPassword = await bcrypt.hash(password, 8);
-    const user = new User({ name, email, password: hashedPassword });
+    const user = new User({ name, email, password: hashedPassword,favorites });
 
     await user.save();
 
@@ -167,3 +168,27 @@ export const verifyForgotMail: RequestHandler = async (req, res, next) => {
     return next(createHttpError(401, "Token Invalid"));
   }
 };
+export const addFavorite: RequestHandler = async (req, res, next) => {
+  const reqData = req.body;
+
+  try {
+    await User.findByIdAndUpdate(
+      reqData.userId,
+      { $push: { favorites: reqData.adId } },
+      { new: true, useFindAndModify: false }
+    );
+    res.json({ message: "Favorite added Sucessfully!" });
+  } catch (error) {
+    return next(createHttpError(401, "Error updating the user favorites"));
+  }
+};
+export const getUserData : RequestHandler = async (req, res, next) => {
+  try {
+    let userInfo = await User.findOne(req.query).populate("favorites");
+    res.json({ message: "User details",body: userInfo});
+  } catch (error) {
+    console.log(error);
+    return next(createHttpError(401, "Error while reading the userData"));
+  }
+};
+
