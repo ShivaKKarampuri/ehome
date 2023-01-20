@@ -25,12 +25,14 @@ app.use("/listings", productRoute);
 app.use("/ad", adRoute);
 
 app.use("/advertisement",createAdvertisement);
-app.use(() => {
-  throw createHttpError(404, "Route not found");
-});
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
+app.use(() => {
+  throw createHttpError(404, "Route not found");
+});
 app.listen(3000, () => {
   console.log(`Listening On PORT 3000`);
 });

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start:dev": "nodemon",
+    "prestart": "npm run build",
     "start": "node dist/app.js"
   },
   "keywords": [],
