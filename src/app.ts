@@ -33,18 +33,18 @@ app.get('/', (req, res) => {
 app.use(() => {
   throw createHttpError(404, "Route not found");
 });
-app.listen(3000, () => {
-  console.log(`Listening On PORT 3000`);
+app.listen(80, () => {
+  console.log(`Listening On PORT 80`);
 });
 
 app.use(errorHandler);
 
-// mongoose
-//   .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
-//   .then(() => {
-//     console.log("Connected to db");
+mongoose
+  .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
+  .then(() => {
+    console.log("Connected to db");
     
-//   })
-//   .catch(() => {
-//     throw createHttpError(501, "Unable to connect database");
-//   });
+  })
+  .catch(() => {
+    throw createHttpError(501, "Unable to connect database");
+  });
