@@ -33,8 +33,8 @@ app.get('/', (req, res) => {
 app.use(() => {
   throw createHttpError(404, "Route not found");
 });
-app.listen(3000, () => {
-  console.log(`Listening On PORT 3000`);
+app.listen(8080, () => {
+  console.log(`Listening On PORT 8080`);
 });
 
 app.use(errorHandler);
