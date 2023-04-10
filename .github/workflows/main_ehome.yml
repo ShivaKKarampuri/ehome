@@ -53,7 +53,7 @@ jobs:
         id: deploy-to-webapp
         uses: |
           azure/webapps-deploy@v2 
-          ls -al
+          ls -altr
         with:
           app-name: 'ehome'
           slot-name: 'Production'
