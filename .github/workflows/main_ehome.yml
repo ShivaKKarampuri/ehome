@@ -47,12 +47,15 @@ jobs:
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v2 
         with:
           app-name: 'ehome'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5CF4BCB785DE4CC286F93560CEF2EDE9 }}
           package: .
-        #run: |
-        #  ls -ltr
+
+      - name: 'test'
+        id: test
+        run: |
+          ls -ltr
         #  npm start
