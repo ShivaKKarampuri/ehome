@@ -1,50 +1,35 @@
-import express, { ErrorRequestHandler } from "express";
+import * as dotenv from 'dotenv';
+dotenv.config();
+import express from "express";
+import bodyParser from "body-parser";
 import createHttpError from "http-errors";
-import userRoute from "./routes/userRoutes";
-import productRoute from "./routes/product";
-import adRoute from "./routes/ad";
-import mongoose from "mongoose";
-import { DB, PORT } from "./config";
-import { errorHandler } from "./middleware/errorHanlder";
-// import passport from "passport";
-// import kPassport from "./middleware/passport";
+
+import { mongoConfig } from "./config/db.config";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { createAdvertisement } from "./controllers/advertisementController";
+import versionRouter from "./versions/version_routes";
+
 const app = express();
 app.use(cors({ origin: "*" }));
+app.use(bodyParser.urlencoded({ limit: "500mb", extended: false }));
+app.use(bodyParser.json({ limit: "500mb" }));
 app.use(express.json());
 app.use(cookieParser());
 
-// app.use(passport.initialize());
-// kPassport(passport);
 
-// app.use("/", exampleRoute);
-app.use("/user", userRoute);
-app.use("/listings", productRoute);
-app.use("/ad", adRoute);
+app.use("/api", versionRouter);
 
-app.use("/advertisement",createAdvertisement);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Server connected')
 })
 
 app.use(() => {
   throw createHttpError(404, "Route not found");
 });
-app.listen(8080, () => {
+
+app.listen(process.env.PORT, () => {
   console.log(`Listening On PORT 8080`);
 });
 
-app.use(errorHandler);
-
-mongoose
-  .connect('mongodb+srv://manohar_rentals:AyUeKSdwY3IbrNZE@cluster0.sr9lrre.mongodb.net/?retryWrites=true&w=majority')
-  .then(() => {
-    console.log("Connected to db");
-    
-  })
-  .catch(() => {
-    throw createHttpError(501, "Unable to connect database");
-  });
+mongoConfig();

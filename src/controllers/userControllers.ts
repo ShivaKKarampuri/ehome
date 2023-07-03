@@ -170,7 +170,7 @@ export const verifyForgotMail: RequestHandler = async (req, res, next) => {
 };
 export const addFavorite: RequestHandler = async (req, res, next) => {
   const reqData = req.body;
-
+console.log("reqdata");
   try {
     await User.findByIdAndUpdate(
       reqData.userId,
